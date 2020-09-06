@@ -3,9 +3,10 @@
 - Often time integrated with interface but not always the same case
 
 Example
+```java
 Interger[] arrayofInt=new Integer[]{1,2,3};
 List<Integer> listOfInt=Array.asList(arrayofInt);
-
+```
 Note: array is adapted into List. Thus, it is adapter design pattern.
 
 
