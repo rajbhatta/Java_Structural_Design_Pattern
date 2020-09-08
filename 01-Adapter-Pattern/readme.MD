@@ -112,3 +112,9 @@ public class EmployeeClient {
 }
 
 ```
+Let's say we do have Employee coming from EmployeeDb and EmployeeLdap and we are returning employee from EmployeeClient.  Then, EmployeeLdap can't be added in 
+```js
+List<Employee> employees=new ArrayList<Employee>();
+```
+
+Because List must have Employee type interface and EmployeeLdap is not implementing Employee interface. So, to solve this sitation, we ca use ddapter design pattern.
