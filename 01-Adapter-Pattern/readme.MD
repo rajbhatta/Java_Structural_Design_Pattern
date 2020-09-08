@@ -118,3 +118,57 @@ List<Employee> employees=new ArrayList<Employee>();
 ```
 
 Because List must have Employee type interface and EmployeeLdap is not implementing Employee interface. So, to solve this sitation, we ca use ddapter design pattern.
+
+## Solution ##
+```js
+package code.solution;
+
+public class EmployeeAdapter implements Employee {
+
+    private EmployeeLdap employeeLdap;
+
+    public EmployeeAdapter(EmployeeLdap employeeLdap) {
+    }
+
+    public String getId() {
+        return employeeLdap.getCn();
+    }
+
+    public String getFirstName() {
+        return employeeLdap.getGivenName();
+    }
+
+    public String getLastName() {
+        return employeeLdap.getSurname();
+    }
+
+    public String getEmail() {
+        return employeeLdap.getEmail();
+    }
+}
+
+```
+New EmployeeClient class
+```js
+package code.solution;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeClient {
+    public List<Employee> getEmployee(){
+        List<Employee> employees=new ArrayList<Employee>();
+
+        Employee employeeFromDB=new EmployeeDb("1","Raj","Bhatta","test@gmail.com");
+
+        employees.add(employeeFromDB);
+
+
+        EmployeeLdap employeeLdap=new EmployeeLdap("2","Raj-2","Bhatta-2","test2@gmail.com");
+        employees.add(new EmployeeAdapter(employeeLdap));
+
+        return employees;
+    }
+}
+
+```

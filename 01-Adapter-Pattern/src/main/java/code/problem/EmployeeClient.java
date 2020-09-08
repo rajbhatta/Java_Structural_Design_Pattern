@@ -19,9 +19,9 @@ public class EmployeeClient {
          */
 
         // Since our EmployeeLdap is not implementing Employee interface. So,
-       EmployeeLdap employeeLdap=new EmployeeLdap("2","Raj-2","Bhatta-2","test2@gmail.com");
+       // EmployeeLdap employeeLdap=new EmployeeLdap("2","Raj-2","Bhatta-2","test2@gmail.com");
        // It doesn't work
-        employees.add(employeeLdap)
+       // employees.add(employeeLdap)
 
         return employees;
     }
