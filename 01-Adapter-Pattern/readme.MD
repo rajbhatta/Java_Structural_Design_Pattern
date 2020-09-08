@@ -9,5 +9,106 @@ List<Integer> listOfInt=Array.asList(arrayofInt);
 ```
 Note: array is adapted into List. Thus, it is adapter design pattern.
 
-
 ## Problem Analysis ##
+```js
+package code.problem;
+
+public class EmployeeDb implements Employee {
+
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String email;
+
+    public EmployeeDb(String id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
+
+```
+
+```js
+package code.problem;
+
+public class EmployeeLdap {
+        private String cn;
+        private String surname;
+        private String givenName;
+        private String email;
+
+    public EmployeeLdap(String cn, String surname, String givenName, String email) {
+        this.cn = cn;
+        this.surname = surname;
+        this.givenName = givenName;
+        this.email = email;
+    }
+
+    public String getCn() {
+        return cn;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
+
+```
+
+```js
+package code.problem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeClient {
+    public List<Employee> getEmployee(){
+        List<Employee> employees=new ArrayList<Employee>();
+
+        Employee employeeFromDB=new EmployeeDb("1","Raj","Bhatta","test@gmail.com");
+
+        employees.add(employeeFromDB);
+
+
+        /**
+         * Since our EmployeeLdap is not implementing Employee interface. So,
+         *   EmployeeLdap employeeLdap=new EmployeeLdap("2","Raj-2","Bhatta-2","test2@gmail.com");
+         *   can not be added to 
+         */
+        
+        // Since our EmployeeLdap is not implementing Employee interface. So,
+       EmployeeLdap employeeLdap=new EmployeeLdap("2","Raj-2","Bhatta-2","test2@gmail.com");
+       // It doesn't work
+        employees.add(employeeLdap)
+
+        return employees;
+    }
+}
+
+```
