@@ -3,4 +3,4 @@
 - Root of the tree start with component leaf or composite.
 
 ## UML Design for Composite Design Pattern ##
-<img src="composite-intro.png"/>
+<img src="Composite-intro.png"/>
