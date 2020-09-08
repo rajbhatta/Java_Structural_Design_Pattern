@@ -172,3 +172,13 @@ public class EmployeeClient {
 }
 
 ```
+
+### Limitations of Adapter Design Pattern ###
+- Multiple type adapter are possible so pattern may be changed.
+
+
+### Contrast ###
+- Works after code is designed
+- Works with legacy code
+- Retrofitted to make unrelated class workable
+- Provides different interfaces
