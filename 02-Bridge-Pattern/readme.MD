@@ -14,6 +14,91 @@ Number of class combinations grows in geometric progression.Adding new shape typ
 
 <img src="Bridge-Pattern-Problem.png"/>
 
+```js
+package problem;
+
+public abstract class Shape {
+    public Shape() {
+    }
+
+    abstract public void applyColor();
+}
+```
+
+```js
+package problem;
+
+public abstract class Square extends Shape {
+}
+
+```
+
+```js
+package problem;
+
+public abstract class Circle extends Shape {
+}
+
+```
+```js
+package problem;
+
+public class RedCircle extends Circle {
+    public void applyColor() {
+        System.out.println("Applying red color");
+    }
+}
+
+```
+
+```js
+package problem;
+
+public class RedSquare extends Square {
+    public void applyColor() {
+        System.out.println("Applying red color");
+    }
+}
+```
+
+```js
+package problem;
+
+public class BlueCircle extends Circle {
+
+    public void applyColor() {
+        System.out.println("Applying blue color");
+    }
+}
+
+```
+
+```js
+package problem;
+
+public class BlueSquare extends Square {
+    public void applyColor() {
+        System.out.println("Applying blue color");
+    }
+}
+
+```
+
+```js
+package problem;
+
+public class BridgeDemo {
+    public static void main(String [] args){
+
+        Circle circle=new BlueCircle();
+        Square square=new RedSquare();
+
+        circle.applyColor();
+        square.applyColor();
+
+    }
+}
+```
 
 ## Solution ## 
 <img src="Bridge-Pattern-Solution.png"/>
