@@ -125,3 +125,78 @@ public class Person {
 
 ## Solution ## 
 <img src="Bridge-Pattern-Solution.png"/>
+
+```js
+package solution;
+
+public interface Color {
+    public void applyColor();
+}
+
+```
+
+```js
+package solution;
+
+public abstract class Shape {
+    protected Color color;
+
+    public Shape(Color color) {
+        this.color = color;
+    }
+
+    public abstract void applyColor();
+}
+
+```
+
+```js
+package solution;
+
+public class Blue implements Color {
+    public void applyColor() {
+        System.out.println("Apply blue color");
+    }
+}
+```
+
+```js
+package solution;
+
+public class Red implements Color{
+    public void applyColor() {
+
+    }
+}
+
+```
+
+```js
+package solution;
+
+public class Sqaure extends Shape {
+    public Sqaure(Color color) {
+        super(color);
+    }
+
+    public void applyColor() {
+
+    }
+}
+```
+
+```js
+package solution;
+
+public class Circle extends Shape {
+
+    public Circle(Color color) {
+        super(color);
+    }
+
+    public void applyColor() {
+
+    }
+}
+
+```
