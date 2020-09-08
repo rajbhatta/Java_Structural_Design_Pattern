@@ -12,3 +12,8 @@ You want to extend this class hierarchy to incorporate colors, so you plan to cr
 
 Number of class combinations grows in geometric progression.Adding new shape types and colors to the hierarchy will grow it exponentially. For example, to add a triangle shape you’d need to introduce two subclasses, one for each color. And after that, adding a new color would require creating three subclasses, one for each shape type. The further we go, the worse it becomes.
 
+<img src="Bridge-Pattern-Problem.png"/>
+
+
+## Solution ## 
+<img src="Bridge-Pattern-Solution.png"/>
