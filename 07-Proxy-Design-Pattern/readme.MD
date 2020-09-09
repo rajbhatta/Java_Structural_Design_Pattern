@@ -2,6 +2,13 @@
 - This design pattern is based on interface
 - In proxy design pattern, a class represents functionality of another class.
 
+### Example in Java ##
+```java
+java.lang.reflect.Proxy
+java.rmi.*
+
+```
+
 ## Why we need proxy design pattern ##
 ### Scenario 1: ###
 <br/>
@@ -24,11 +31,86 @@ This way, the actual image viewer will only get called when the image needs to b
  All other operations (such as obtaining the image name, size, date of creation, etc.) don't require the actual image and can therefore be obtained through a much lighter proxy object instead.
 
 
-
-
-### Example in Java ##
+## Example 1: ## 
+- Let's first create our main interface:
 ```java
-java.lang.reflect.Proxy
-java.rmi.*
+package example.first;
+
+public interface ImageViewer {
+    public void displayImage();
+}
 
 ```
+- Next, we'll implement the concrete image viewer. Note that operations occurring in this class are costly:
+
+```java
+package example.first;
+
+import com.sun.prism.Image;
+
+public class ConcreteImageViewer implements ImageViewer {
+
+    private Image image;
+
+    public ConcreteImageViewer(String path) {
+        // Costly operation
+        this.image = Image.load(path);
+    }
+
+    @Override
+    public void displayImage() {
+        // Costly operation
+        image.display();
+    }
+}
+
+```
+
+- Now we'll implement our lightweight image viewer proxy. This object will call the concrete image viewer only when needed, i.e. when the client calls the displayImage() method. Until then, no images will be loaded or processed, which will make our program much more efficient.
+
+```java
+package example.first;
+
+public class ImageViewerProxy implements ImageViewer {
+
+    private String path;
+    private ImageViewer viewer;
+
+    public ImageViewerProxy(String path) {
+        this.path = path;
+    }
+
+    @Override
+    public void displayImage() {
+        this.viewer = new ConcreteImageViewer(this.path);
+        this.viewer.displayImage();
+    }
+}
+```
+- Finally, we'll write the client-side of our program. In the code below, we are creating six different image viewers. 
+First, three of them are the concrete image viewers that automatically load images on creation. 
+The last three images don't load any images into memory on creation.
+  
+- Only with the last line will the first proxy viewer start loading the image. 
+Compared to the concrete viewers, performance benefits are obvious:
+
+```java
+package example.first;
+
+public class NexusRunner {
+    public static void main(String[] args) {
+        ImageViewer flowers = new ConcreteImageViewer("./photos/flowers.png");
+        ImageViewer trees = new ConcreteImageViewer("./photos/trees.png");
+        ImageViewer grass = new ConcreteImageViewer("./photos/grass.png");
+
+        ImageViewer sky = new ImageViewerProxy("./photos/sky.png");
+        ImageViewer sun = new ImageViewerProxy("./photos/sun.png");
+        ImageViewer clouds = new ImageViewerProxy("./photos/clouds.png");
+
+        sky.displayImage();
+    }
+}
+
+```
+
+## Example 2: ##
