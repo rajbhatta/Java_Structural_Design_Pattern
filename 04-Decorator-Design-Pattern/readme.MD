@@ -16,7 +16,7 @@ doStream.writeChars("text");
 ```
 
 ### Example 1: How to design decorator design pattern ? ### 
-Suppose, we have a Shape interface, which can includedraw(), resize() ,  isHide(), anddescription().
+Suppose, we have a Shape interface, which can <p style='color:red'>includedraw(), resize() ,  isHide(), anddescription(). </p>
 ```java
 package decorator.example1.core;
 
