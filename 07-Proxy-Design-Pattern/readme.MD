@@ -194,3 +194,107 @@ public class FalconRunner {
 }
 
 ```
+
+## Example 3: ##
+```java
+package example.third;
+
+public interface CommandExecutor {
+    public void runCommand(String cmd) throws Exception;
+}
+
+```
+
+```java
+package example.third;
+
+import java.io.IOException;
+
+public class CommandExecutorImpl implements CommandExecutor {
+
+    @Override
+    public void runCommand(String cmd) throws IOException {
+        //some heavy implementation
+        Runtime.getRuntime().exec(cmd);
+        System.out.println("'" + cmd + "' command executed.");
+    }
+
+}
+
+```
+
+```java
+package example.third;
+
+public class CommandExecutorProxy implements CommandExecutor {
+    private CommandExecutor executor;
+    private User user;
+
+    public CommandExecutorProxy(User user) {
+        if(isAdmin()){
+            executor = new CommandExecutorImpl();
+        }
+    }
+
+    @Override
+    public void runCommand(String cmd) throws Exception {
+        if(isAdmin()){
+            executor.runCommand(cmd);
+        }else{
+            if(cmd.trim().startsWith("rm")){
+                throw new Exception("rm command is not allowed for non-admin users.");
+            }else{
+                executor.runCommand(cmd);
+            }
+        }
+    }
+
+    private boolean isAdmin(){
+        if("Raj".equals(user.getUserName()) && "Bhatta".equals(user.getPassword())){
+            return true;
+        }
+        return false;
+    }
+}
+
+```
+
+```java
+package example.third;
+
+public class User {
+    private String password;
+    private String userName;
+
+    public User(String password, String userName) {
+        this.password = password;
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+}
+
+```
+
+```java
+package example.third;
+
+public class ProxyDesignCheck {
+    public static void main(String [] args){
+
+        CommandExecutor executor = new CommandExecutorProxy(new User("raj","bhatta"));
+        try {
+            executor.runCommand("ls -ltr");
+            executor.runCommand(" rm -rf abc.pdf");
+        } catch (Exception e) {
+            System.out.println("Exception Message::"+e.getMessage());
+        }
+    }
+}
+```
