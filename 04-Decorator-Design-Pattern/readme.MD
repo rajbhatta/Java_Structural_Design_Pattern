@@ -16,7 +16,56 @@ doStream.writeChars("text");
 ```
 
 ### Example 1: How to design decorator design pattern ? ### 
-Suppose, we have a Shape interface, which can <p style='color:red'>includedraw(), resize() ,  isHide(), anddescription(). </p>
+Suppose, we have a Shape interface, which can includedraw(), resize() ,  isHide(), anddescription().
+```java
+package decorator.example1.core;
+
+public class Circle implements Shape {
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+    @Override
+    public void resize() {
+        System.out.println("Resizing Circle");
+    }
+    @Override
+    public String description() {
+        return "Circle object";
+    }
+    @Override
+    public boolean isHide() {
+        return false;
+    }
+}
+```
+- Now, we have two concrete classes of Shape  — Circle and Rectangle — to define a specific shape.
+
+```java
+package decorator.example1.core;
+
+public class Rectangle implements Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Rectangle");
+    }
+    @Override
+    public void resize() {
+        System.out.println("Resizing Rectangle");
+    }
+    @Override
+    public String description() {
+        return "Rectangle object";
+    }
+    @Override
+    public boolean isHide() {
+        return false;
+    }
+}
+
+```
+
 ```java
 package decorator.example1.core;
 
