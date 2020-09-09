@@ -1,19 +1,23 @@
 package example.first;
 
-import com.sun.prism.Image;
-
 public class ConcreteImageViewer implements ImageViewer {
-
-    private Image image;
 
     public ConcreteImageViewer(String path) {
         // Costly operation
-        this.image = Image.load(path);
+        loadImage();
     }
 
     @Override
     public void displayImage() {
         // Costly operation
-        image.display();
+        display();
+    }
+
+    private void loadImage(){
+        System.out.print("Load image here");
+    }
+
+    private void display(){
+        System.out.print("Display image here");
     }
 }
