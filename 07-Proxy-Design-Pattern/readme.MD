@@ -298,3 +298,7 @@ public class ProxyDesignCheck {
     }
 }
 ```
+
+## Pitfall ##
+- Only one proxy is allowed
+- Add another layer of abstraction
