@@ -192,3 +192,9 @@ public class NexusRunner {
 }
 
 ```
+
+## Pitfall ## 
+- Typically used to clean up code
+- Should think about API design
+- Flat problem/structure becuase it utilize inheritance
+- It is the singleton of structural Pattern 
