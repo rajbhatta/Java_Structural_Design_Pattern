@@ -207,3 +207,8 @@ New letter created with value: 	c
 New letter created with value: 	s
 Hello word processor errrr
 ```
+
+## Pitfall ##
+- Complex pattern because we need to include other pattern such as factory 
+- Premature optimization
+- 
