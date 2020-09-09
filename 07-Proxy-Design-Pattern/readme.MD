@@ -117,3 +117,80 @@ public class NexusRunner {
 ```
 
 ## Example 2: ##
+```java
+package example.second;
+
+public interface Spaceship {
+    public void fly();
+}
+
+```
+
+```java
+package example.second;
+
+public class MillenniumFalcon implements Spaceship {
+    @Override
+    public void fly() {
+        System.out.println("Welcome, Raj. The Millennium Falcon is starting up its engines!");
+    }
+}
+
+```
+
+```java
+package example.second;
+
+public class Pilot {
+    private String name;
+
+    public Pilot(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+}
+
+```
+
+```java
+package example.second;
+
+public class MillenniumFalconProxy implements Spaceship {
+
+    private Pilot pilot;
+    private Spaceship falcon;
+
+    public MillenniumFalconProxy(Pilot pilot) {
+        this.pilot = pilot;
+        this.falcon = new MillenniumFalcon();
+    }
+
+    @Override
+    public void fly() {
+        if (pilot.getName().equals("Han Solo")) {
+            falcon.fly();
+        } else {
+            System.out.printf("Sorry %s, only Han Solo can fly the Falcon!\n", pilot.getName());
+        }
+    }
+}
+```
+
+```java
+package example.second;
+
+public class FalconRunner {
+    public static void main(String[] args){
+        Spaceship falcon1 = new MillenniumFalconProxy(new Pilot("Raj Bhatta"));
+        falcon1.fly();
+
+        Spaceship falcon2 = new MillenniumFalconProxy(new Pilot("Programmer Bhatta"));
+        falcon2.fly();
+    }
+}
+
+```
