@@ -81,10 +81,13 @@ public class ImageViewerProxy implements ImageViewer {
     }
 
     @Override
-    public void displayImage() {
-        this.viewer = new ConcreteImageViewer(this.path);
-        this.viewer.displayImage();
-    }
+        public void displayImage() {
+            if (this.viewer == null) {
+                this.viewer = new ConcreteImageViewer(this.path);
+            }
+            this.viewer.displayImage();
+        }
+
 }
 ```
 - Finally, we'll write the client-side of our program. In the code below, we are creating six different image viewers. 

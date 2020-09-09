@@ -11,7 +11,9 @@ public class ImageViewerProxy implements ImageViewer {
 
     @Override
     public void displayImage() {
-        this.viewer = new ConcreteImageViewer(this.path);
+        if (this.viewer == null) {
+            this.viewer = new ConcreteImageViewer(this.path);
+        }
         this.viewer.displayImage();
     }
 }
