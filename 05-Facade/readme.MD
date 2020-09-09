@@ -122,3 +122,73 @@ public class NexusRunner {
     }
 }
 ```
+
+### Example 2: facade design pattern ###
+```java
+package example.two;
+
+public class CarEngine {
+    public void setCarEngine(){
+        System.out.println("Car Engine is set.");
+    }
+}
+
+```
+
+```java
+package example.two;
+
+public class CarBody {
+    public void setCarBody(){
+        System.out.println("Car body is set.");
+    }
+}
+
+```
+
+```java
+package example.two;
+
+public class CarAccessories {
+    public void setCarAccessories(){
+        System.out.println("Car accessories are set.");
+    }
+}
+
+```
+
+```java
+package example.two;
+
+public class CarFacade {
+
+    private CarEngine engine;
+    private CarBody body;
+    private CarAccessories accessories;
+    public CarFacade(){
+        this.engine = new CarEngine();
+        this.body = new CarBody();
+        this.accessories = new CarAccessories();
+    }
+    public void createCar(){
+        System.out.println("Creating a car...");
+        engine.setCarEngine();
+        body.setCarBody();
+        accessories.setCarAccessories();
+        System.out.println("Your car is ready.");
+    }
+}
+
+```
+
+```java
+package example.two;
+
+public class NexusRunner {
+    public static void main(String[] args) {
+        CarFacade facade = new CarFacade();
+        facade.createCar();
+    }
+}
+
+```
