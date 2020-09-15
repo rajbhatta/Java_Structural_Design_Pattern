@@ -4,9 +4,12 @@
 - Targeted for new code
 
 
-##  Example : ## 
+##  Example of Bridge Design Pattern (JDBC): ## 
 ```java
-Jdbc 
+DriverManager.registeredDriver(new org.apache.derby.jdbc.EmbeddedDriver());
+String dbUrl="jdbc:derby:memory:codejava/weddb;create=true";
+Connection connection=DriverManager.getConnection(DbUrl);
+Statement sta=con.createStatement();
 ```
 
 ## Problems ##
