@@ -2,7 +2,7 @@
 - It is very client centric that means legacy component is integrated with client using Adapter.
 - Often time integrated with interface but not always the same case
 
-Example
+### Example of adapter design pattern in Java ##
 ```java
 Interger[] arrayofInt=new Integer[]{1,2,3};
 List<Integer> listOfInt=Array.asList(arrayofInt);
